@@ -98,11 +98,52 @@
 
 
 
-    @media only screen and (max-width: 1570px   ) {
+    @media only screen and (max-width: 1750px   ) {
     .header{
-        grid-template-columns: 15% 55% 15%;
+        grid-template-columns: 15% 75%;
 
     }
+
+    }
+    
+  /* laptop */
+    @media only screen and (max-width: 1730px   ) {
+        .header{
+            grid-template-columns: 15% 75%;
+    
+        }
+        .header .menu{
+            display: flex;
+        }
+        
+        .header .menu .nosl{    
+            /* height: 5vh; */
+            border: none;
+            background-color: #1a1d29;
+            color: #ffffff;
+            margin-right: 30px;
+            opacity: 70%;
+            padding-top: 10px;
+            text-decoration: none;
+        }
+        .header .menu .selected{
+            border: none;
+            background-color: #1a1d29;
+            color: #ffffff;
+            opacity: 100%;
+            margin-right: 30px;
+            padding-top: 10px;
+            text-decoration: none;
+        }
+        .header .menu .form{
+            width: 25%;
+        }
+        .header .menu .form .css-96uuyl{
+            width: 100%;
+            background-color: #ffffff;
+            opacity: 90%;
+            margin-left: 0;
+        }
     }
 
   /* IP 12pmx */
