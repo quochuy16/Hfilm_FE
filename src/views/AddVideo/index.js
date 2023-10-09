@@ -22,7 +22,7 @@ function AddVideo(){
     
         try {
           const values ={ name,url,category,national, numEpisode}
-          await fetch('http://localhost:3001/video', {
+          await fetch('https://hfilm-be.onrender.com/video', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

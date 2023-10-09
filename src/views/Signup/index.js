@@ -30,7 +30,7 @@ function Signup(){
     
         try {
           const values ={ name,email,password,confirmPassword }
-          const res = await axios.post('http://localhost:3001/user/sign-up', values)
+          const res = await axios.post('https://hfilm-be.onrender.com/user/sign-up', values)
           console.log(res)
             localStorage.setItem("ID",res.data.user._id);
             localStorage.setItem("Token", res.data.token);
