@@ -50,6 +50,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 function Header(){
+  const currentURL = window.location.href;
+
+  // Lấy đường route từ URL
+  const url = new URL(currentURL);
+  const page = url.pathname;
+  console.log(page);
+
   const [name,setName] = useState('')
   useEffect(()=>{
     if(localStorage.getItem('Token')){
@@ -62,7 +69,6 @@ function Header(){
   let navigate = useNavigate();
   
   const [btn, setBtn] = useState('')
-  var page = window.location.href.slice(22)
     const hanleBtnHome = () =>{
         setBtn('')
         document.documentElement.scrollTop = 0
@@ -111,11 +117,11 @@ function Header(){
         <div className="header">
             <a href="/"><img onClick={hanleBtnHome} className="imgLogo" src={DarkLogo} alt="logo"/></a>
             <div className="menu">
-                <Link to='/' onClick={hanleBtnHome} className={page === '' ? 'selected':'nosl'}><CIcon icon={cilHome} style={page === '' ?{'--ci-primary-color': '#30A0E0',width:'20px', margin: "0 5px 7px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 7px 0"}} />TRANG CHỦ</Link>
-                <Link to='/categories' onClick={hanleBtnCate} className={page === 'categories' ? 'selected':'nosl'}><CIcon icon={cilMovie} style={page === 'categories' ?{'--ci-primary-color': '#EE8980',width:'20px', margin: "0 5px 5px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 5px 0"}} />THỂ LOẠI</Link>
-                <Link to="/nation" onClick={hanleBtnNation} className={page === 'nation' ? 'selected':'nosl'}><CIcon icon={cilMap} style={page === 'nation' ?{'--ci-primary-color': '#62C4C3',width:'20px', margin: "0 5px 5px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 5px 0"}} />QUỐC GIA</Link>
-                <Link to="/favourite" onClick={hanleBtnFavourite} className={page === 'favourite' ? 'selected':'nosl'}><CIcon icon={cilHeart} style={page === 'favourite' ?{'--ci-primary-color': '#F14666',width:'20px', margin: "0 5px 5px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 5px 0"}} />YÊU THÍCH</Link>
-                <Link to="/allFilm" onClick={hanleBtnSeries} className={page === 'allFilm' ? 'selected':'nosl'}><CIcon icon={cilPlaylistAdd} style={page === 'allFilm' ?{'--ci-primary-color': '#FFC872',width:'20px', margin: "0 5px 5px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 5px 0"}} />PHIM</Link>
+                <Link to='/' onClick={hanleBtnHome} className={page === '/' ? 'selected':'nosl'}><CIcon icon={cilHome} style={page === '/' ?{'--ci-primary-color': '#30A0E0',width:'20px', margin: "0 5px 7px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 7px 0"}} />TRANG CHỦ</Link>
+                <Link to='/categories' onClick={hanleBtnCate} className={page === '/categories' ? 'selected':'nosl'}><CIcon icon={cilMovie} style={page === '/categories' ?{'--ci-primary-color': '#EE8980',width:'20px', margin: "0 5px 5px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 5px 0"}} />THỂ LOẠI</Link>
+                <Link to="/nation" onClick={hanleBtnNation} className={page === '/nation' ? 'selected':'nosl'}><CIcon icon={cilMap} style={page === '/nation' ?{'--ci-primary-color': '#62C4C3',width:'20px', margin: "0 5px 5px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 5px 0"}} />QUỐC GIA</Link>
+                <Link to="/favourite" onClick={hanleBtnFavourite} className={page === '/favourite' ? 'selected':'nosl'}><CIcon icon={cilHeart} style={page === '/favourite' ?{'--ci-primary-color': '#F14666',width:'20px', margin: "0 5px 5px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 5px 0"}} />YÊU THÍCH</Link>
+                <Link to="/allFilm" onClick={hanleBtnSeries} className={page === '/allFilm' ? 'selected':'nosl'}><CIcon icon={cilPlaylistAdd} style={page === '/allFilm' ?{'--ci-primary-color': '#FFC872',width:'20px', margin: "0 5px 5px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 5px 0"}} />PHIM</Link>
                 <form className='form'  onSubmit={handleSubmit}>
                   <Search>
                       <SearchIconWrapper>
