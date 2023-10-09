@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout'
 import './Nation.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import CIcon from '@coreui/icons-react';
 import { cilFire} from '@coreui/icons';
 import { styled } from '@mui/material/styles';
@@ -58,9 +58,20 @@ function Nation(){
         }
     },[national])
       
+    
+    const heightRef = useRef()
+    const [height,setHeight] = useState(201)
+    useEffect(() => {
+        const element = heightRef.current;
+        if (element) {
+          const height = element.clientHeight;
+          console.log(height);
+          setHeight(height)
+        }
+      }, [heightRef,newFilm]);
     return(
         <Layout>
-        <div className="national">
+        <div className={height<=800?'nationalHeightMin':'national'}>
             <div className='content'>
                 <div className='title'>
                     <Dropdown className='dropdown'>
@@ -88,7 +99,7 @@ function Nation(){
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
-                <div className='row1'>
+                <div ref={heightRef} className='row1'>
                     <Box sx={{ flexGrow: 2 }}>
                         <Grid container spacing={1}>
                             {newFilm.map((film,index)=>(

@@ -111,6 +111,7 @@
         .header{
             grid-template-columns: 15% 75%;
     
+            height: 7vh;
         }
         .header .menu{
             display: flex;
@@ -151,6 +152,7 @@
     .header{
         display: flex;
         padding: 0 20px;
+        height: 7vh;
     }
     .header .menu, .button{
         display: none;

@@ -110,3 +110,22 @@
     font-weight: bold;
     margin-bottom: 20px;
 }
+/*REPONSIVE*/
+/* sm phone */
+@media only screen and (max-width: 450px   ) {
+    .seriesHeightMin{
+        margin-top: 7vh;
+        margin-bottom: 0;
+    }
+    .seriesHeightMin .content{
+        margin:1rem 0.5rem;
+    }
+    .seriesHeightMin .content .title{
+        font-size: 20px;
+        padding: 1rem 0;
+    }
+    .seriesHeightMin .content .title .icon{
+        width: 30px !important;
+    }
+
+  }

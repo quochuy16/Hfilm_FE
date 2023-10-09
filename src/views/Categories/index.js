@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout'
 import './Categories.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useState,useRef } from 'react';
 import CIcon from '@coreui/icons-react';
 import { cilFire} from '@coreui/icons';
 import { styled } from '@mui/material/styles';
@@ -56,10 +56,19 @@ function Categories(){
             setNewFilm(arrFilm)
         }
     },[category])
-      
+    const heightRef = useRef()
+    const [height,setHeight] = useState(201)
+    useEffect(() => {
+        const element = heightRef.current;
+        if (element) {
+          const height = element.clientHeight;
+          console.log(height<=600,height);
+          setHeight(height)
+        }
+      }, [heightRef,newFilm]);
     return(
         <Layout>
-        <div className="categories">
+        <div className={height<=500?'categoriesHeightMin':'categories'}>
             <div className='content'>
                 <div className='title'>
                     <Dropdown className='dropdown'>
@@ -87,7 +96,7 @@ function Categories(){
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
-                <div className='row1'>
+                <div ref={heightRef} className='row1'>
                     <Box sx={{ flexGrow: 2 }}>
                         <Grid container spacing={1}>
                             {newFilm.map((film,index)=>(

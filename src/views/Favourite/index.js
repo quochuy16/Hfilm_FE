@@ -81,7 +81,7 @@ function Favourite(){
                                 <CIcon icon={cilFire} style={{'--ci-primary-color': 'red',width:'40px'}} /> 
                                 <div className='nametitle'>Yêu Thích</div>
                             </div>
-                            <div className='row1'>
+                            <div ref={heightRef} className='row1'>
                                 <Box sx={{ flexGrow: 2 }}>
                                     <Grid container spacing={1}>
                                     {arrFilm.map((film,index)=>(

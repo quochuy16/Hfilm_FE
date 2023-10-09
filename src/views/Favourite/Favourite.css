@@ -101,3 +101,22 @@
   	overflow: hidden;
   	text-overflow: ellipsis;
 }
+/*REPONSIVE*/
+/* sm phone */
+@media only screen and (max-width: 450px   ) {
+    .favouriteHeightMin{
+        margin-top: 7vh;
+        margin-bottom: 0;
+    }
+    .favouriteHeightMin .content{
+        margin:1rem 0.5rem;
+    }
+    .favouriteHeightMin .content .title{
+        font-size: 20px;
+        padding: 1rem 0;
+    }
+    .favouriteHeightMin .content .title .icon{
+        width: 30px !important;
+    }
+
+  }
