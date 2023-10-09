@@ -64,7 +64,9 @@
 }
 
 @media only screen and (max-width: 450px) {
-    .footer
+    .footer{
+        display: none;
+    }
     .footer .menu{
         display: none;
     }
