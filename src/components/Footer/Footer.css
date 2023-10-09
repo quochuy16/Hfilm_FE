@@ -57,12 +57,14 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
-  /* Reponsive */
+
+  /* -------Reponsive------- */
+
     /* laptop */
 @media only screen and (max-width: 1730px) {
     
 }
-
+    /* smphone */
 @media only screen and (max-width: 450px) {
     .footer{
         display: none;
