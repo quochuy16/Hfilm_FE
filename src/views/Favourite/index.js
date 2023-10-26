@@ -82,7 +82,7 @@ function Favourite(){
                                 <CIcon icon={cilFire} style={{'--ci-primary-color': 'red',width:'40px'}} /> 
                                 <div className='nametitle'>Yêu Thích</div>
                             </div>
-                            {arrFilmID
+                            {arrFilm.length==0
                             ?
                             <div className="noFilm">
                                 <h1 style={{marginTop:'10vh',fontSize:'10rem'}}>!!!</h1>
