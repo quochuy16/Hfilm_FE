@@ -53,9 +53,30 @@
 
 @media only screen and (max-width: 450px   ) {
     .signin{
-        margin-top: 0;
+        height: 100vh;
     }
     .signin .form{
         width: 100%;
+    }
+    
+    .signin .form h1{
+        font-size: 1.5rem;
+    }
+    .signin .form h5{
+        font-size: 1rem;
+        margin-bottom: 10%;
+    }
+    .signin .form input{
+        color: white;
+        margin-bottom: 10px;
+        padding: 3vh;
+        background-color: #2f354be7;
+        border: none;
+        outline: none;
+    }
+    .signin .form .forgotPass{
+        text-align: right;
+        text-decoration: none;
+        
     }
 }

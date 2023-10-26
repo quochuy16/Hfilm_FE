@@ -68,7 +68,7 @@ function Categories(){
       }, [heightRef,newFilm]);
     return(
         <Layout>
-        <div className={height<=500?'categoriesHeightMin':'categories'}>
+        <div className={height<=610?'categoriesHeightMin':'categories'}>
             <div className='content'>
                 <div className='title'>
                     <Dropdown className='dropdown'>

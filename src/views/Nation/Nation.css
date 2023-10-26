@@ -180,5 +180,10 @@
     .nationalHeightMin .content .title .icon{
         width: 30px !important;
     }
-
+    .nationalHeightMin .content .row1 {
+        margin-top: 5%;
+    }
+    .national .content .row1 {
+        margin-top: 5%;
+    }
   }

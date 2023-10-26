@@ -13,6 +13,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import Layout from '../../components/Layout';
 import {films} from './../../components/films'
+import { Tooltip } from 'react-tooltip'
 
 function Home(){
     const Item = styled(Paper)(({ theme }) => ({
@@ -50,13 +51,13 @@ function Home(){
                         <Box sx={{ flexGrow: 2 }}>
                             <Grid container spacing={1}>
                                 {films.map((film,index)=>(
-                                    
                                     <Grid item  xs={6} lg={2} key={index}>
                                         <a href={"/film/"+film.link}>
                                             <Item className='item'><img src={film.img} alt=''/></Item>
+                                            <Tooltip id="my-tooltip" place='top'/> 
+                                            <div data-tooltip-id="my-tooltip" data-tooltip-content={film.name} className='filmName'>{film.name}</div>
+                                            <div className='episodeNumber'>{film.pn} tập</div>
                                         </a>
-                                        <div className='filmName'>{film.name}</div>
-                                        <div className='episodeNumber'>{film.pn} tập</div>
                                     </Grid>
                                 ))}
                             </Grid>

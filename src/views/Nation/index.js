@@ -71,7 +71,7 @@ function Nation(){
       }, [heightRef,newFilm]);
     return(
         <Layout>
-        <div className={height<=800?'nationalHeightMin':'national'}>
+        <div className={height<=610?'nationalHeightMin':'national'}>
             <div className='content'>
                 <div className='title'>
                     <Dropdown className='dropdown'>
@@ -107,7 +107,7 @@ function Nation(){
                                     <a href={"/film/"+film.link}>
                                         <Item className='item'><img src={film.img} alt=''/></Item>
                                         <Tooltip id="my-tooltip" place='top'/>
-                                    <div  data-tooltip-id="my-tooltip"  data-tooltip-content={film.name} className='filmName'>{film.name}</div>
+                                    <div data-tooltip-id="my-tooltip" data-tooltip-content={film.name} className='filmName'>{film.name}</div>
                                     <div className='episodeNumber'>{film.pn} tập</div>
                                     </a>
                                 </Grid>

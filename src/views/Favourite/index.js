@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import { Tooltip } from 'react-tooltip'
+
 function Favourite(){
     const Item = styled(Paper)(({ theme }) => ({
         backgroundColor: theme.palette.mode === 'dark' ? '' : '',
@@ -55,7 +56,7 @@ function Favourite(){
               console.error("Error fetching videos:", error);
             });
         }
-      }, [arrFilmID]);
+    }, [arrFilmID]);
     console.log('các film đã thích ',arrFilm)
     console.log('kho fim ',films)
 
@@ -68,19 +69,27 @@ function Favourite(){
           console.log(height);
           setHeight(height)
         }
-      }, [heightRef]);
+    }, [heightRef]);
     return(
         <Layout>
             <>
                 {!token ? 
                     <AccessError/>
                 :
-                    <div ref={heightRef} className={height<=800?'favouriteHeightMin':'favourite'}>
+                    <div className={height<=610?'favouriteHeightMin':'favourite'}>
                         <div className='content'>
                             <div className='title'>
                                 <CIcon icon={cilFire} style={{'--ci-primary-color': 'red',width:'40px'}} /> 
                                 <div className='nametitle'>Yêu Thích</div>
                             </div>
+                            {arrFilmID
+                            ?
+                            <div className="noFilm">
+                                <h1 style={{marginTop:'10vh',fontSize:'10rem'}}>!!!</h1>
+                                <h1>Phim chưa yêu thích tập phim nào</h1>
+                                <a href='/allFilm' style={{'color': 'rgb(211 61 61)'}} ><h2>Hãy xem phim ngay nào</h2></a>
+                            </div>
+                            :
                             <div ref={heightRef} className='row1'>
                                 <Box sx={{ flexGrow: 2 }}>
                                     <Grid container spacing={1}>
@@ -105,6 +114,7 @@ function Favourite(){
                                     </Grid>
                                 </Box> 
                             </div>
+                            }
                         </div>
                     </div>
                 }

@@ -68,25 +68,19 @@ function Header(){
   // const { name, logout } = useContext(AuthContext);
   let navigate = useNavigate();
   
-  const [btn, setBtn] = useState('')
     const hanleBtnHome = () =>{
-        setBtn('')
         document.documentElement.scrollTop = 0
     }
     const hanleBtnCate = () =>{
-        setBtn('categories')
         document.documentElement.scrollTop = 0
     }
     const hanleBtnNation = () =>{
-        setBtn('nation')
         document.documentElement.scrollTop = 0
     }
     const hanleBtnFavourite = () =>{
-        setBtn('favourite')
         document.documentElement.scrollTop = 0
     }
     const hanleBtnSeries = () =>{
-        setBtn('series')
         document.documentElement.scrollTop = 0
     }
     // const hanldeSignIn = () =>{
@@ -159,7 +153,7 @@ function Header(){
                 <Link to="/allFilm" onClick={hanleBtnSeries} className={page === 'allFilm' ? 'selected':'nosl'}><CIcon icon={cilPlaylistAdd} style={page === 'series' ?{'--ci-primary-color': '#FFC872',width:'20px', margin: "0 5px 5px 0"}:{'--ci-primary-color': 'white',width:'20px', margin: "0 5px 5px 0"}} />PHIM</Link>
                 
                   {name ? <a href='/'>{name}</a> : <a href='/sign-up'>Đăng Ký</a>}
-                  {name ? <a href='/sign-in'>Đăng Xuất</a> : <a href='/sign-in'>Đăng Nhập</a>}  
+                  {name ? <a  onClick={handleLogout} href='/sign-in'>Đăng Xuất</a> : <a href='/sign-in'>Đăng Nhập</a>}  
                     
             </div>
             }

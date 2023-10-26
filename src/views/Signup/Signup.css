@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: center;
 }
-.signup .form input[type=text],input[type=password]{
+.signup .form input[type=text],.signup .form input[type=password]{
     color: white;
     margin-top: 20px;
     height: 5vh;
@@ -51,6 +51,8 @@
 @media only screen and (max-width: 450px) {
     .signup{
         margin-top: 0;
+        height: 100vh;
+
     }
     .signup .form{
         width: 100%;
@@ -58,5 +60,15 @@
     }
     .signup .form input{
         height: 10vh;
+    }
+    .signup .form h1{
+        font-size: 1.5rem;
+    }
+    .signup .form h5{
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+    .signup .form .checkbox label{
+        font-size: 0.6rem;
     }
 }

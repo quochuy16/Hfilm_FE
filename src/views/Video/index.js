@@ -5,6 +5,9 @@ import Layout from '../../components/Layout'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import {getAllVideos} from '../../services/videoService'
 import {getUser,updateUser} from '../../services/userService'
+
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 function Video(){
      const idUser = localStorage.getItem("ID")
         
@@ -156,9 +159,15 @@ function Video(){
                     <div className='filmDescription'>Mô tả: {description}</div>
                </div>
                <div className='episode'>
-                    {allFilm.map((film,index)=>(
-                         <a href={film.filmEpisode} style={film.filmEpisode===id ? {"pointerEvents":"none","backgroundColor":"#242424"}:{}} className='btnEpisode'>Tập {index+1}</a>
-                    ))}
+               <Box sx={{ width: '100%' }}>
+                    <Grid container spacing={1}>
+                         {allFilm.map((film,index)=>(
+                              <Grid item xs={2} xl={0.64}>
+                                   <a href={film.filmEpisode} style={film.filmEpisode===id ? {"pointerEvents":"none","backgroundColor":"#242424"}:{}} className='btnEpisode'>Tập {index+1}</a>
+                              </Grid>
+                         ))}
+                    </Grid>
+               </Box>
                </div>
                </div>
           </Layout>

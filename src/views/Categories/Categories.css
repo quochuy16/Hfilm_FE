@@ -177,5 +177,11 @@
     .categoriesHeightMin .content .title .icon{
         width: 30px !important;
     }
+    .categoriesHeightMin .content .row1 {
+        margin-top: 5%;
+    }
+    .categories .content .row1 {
+        margin-top: 5%;
+    }
 
   }

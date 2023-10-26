@@ -2,9 +2,10 @@ import './Signin.css'
 import { useState, useEffect } from 'react'
 import { Button } from '@mui/material'
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import Layout from '../../components/Layout';
 import { ToastContainer, toast } from "react-toastify";
+import { login } from '../../services/userService';
+import 'react-toastify/dist/ReactToastify.css';
 function Signin(){
     let navigate = useNavigate();
 
@@ -20,15 +21,31 @@ function Signin(){
     
     const hanldeSingIn = async (e) => {
         e.preventDefault();
-    
         try {
           const values ={ email,password }
-          const response = await axios.post('https://hfilm-be.onrender.com/user/sign-in',values)
-            console.log(response)
-              localStorage.setItem("ID",response.data.user._id);
-              localStorage.setItem("Name",response.data.user.name);
-              localStorage.setItem("Token", response.data.token);
-              navigate('/')
+          // const response = await axios.post('https://hfilm-be.onrender.com/user/sign-in',values)
+          //   console.log(response)
+          //     localStorage.setItem("ID",response.data.user._id);
+          //     localStorage.setItem("Name",response.data.user.name);
+          //     localStorage.setItem("Token", response.data.token);
+          //     navigate('/')
+          login(values)
+          .then((res)=>{
+            console.log(res)
+            if(res.status===200){
+              console.log('Đăng nhập thành công!')
+              localStorage.setItem("ID",res.data.user._id);
+              localStorage.setItem("Name",res.data.user.name);
+              localStorage.setItem("Token", res.data.token);
+              toast.success('Đăng nhập thành công!')
+              setTimeout(() => {
+                navigate('/'); 
+              },3000);
+            }else{
+              console.log('Lỗi đăng nhập')
+              toast.error('Email hoặc mật khẩu không chính xác!')
+            }
+          })
           .catch((err)=>{
             console.log(err.message);
           })
@@ -56,7 +73,19 @@ function Signin(){
             </Button>
             </center>
           </form>
-        </div>
+          </div>
+          <ToastContainer
+            position="bottom-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
       </Layout>
     )
 }

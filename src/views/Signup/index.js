@@ -2,9 +2,10 @@ import './Signup.css'
 import { Button, Checkbox } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 import Layout from '../../components/Layout';
+import { ToastContainer, toast } from "react-toastify";
+import { register } from '../../services/userService';
+import 'react-toastify/dist/ReactToastify.css';
 function Signup(){
     let navigate = useNavigate();
 
@@ -20,7 +21,6 @@ function Signup(){
     const [password,setPass] = useState()
     const [confirmPassword,setRepass] = useState()
     const [check,setCheck] = useState(true)
-    const [checkPass,setCheckPass] = useState(false)
     const hanldeCheck = () =>{
         setCheck(!check)
         console.log(check)
@@ -30,12 +30,27 @@ function Signup(){
     
         try {
           const values ={ name,email,password,confirmPassword }
-          const res = await axios.post('https://hfilm-be.onrender.com/user/sign-up', values)
-          console.log(res)
-            localStorage.setItem("ID",res.data.user._id);
-            localStorage.setItem("Token", res.data.token);
-            localStorage.setItem("Name", res.data.user.name);
-              navigate('/')
+          register(values)
+          .then((res)=>{
+            // localStorage.setItem("ID",res.data.user._id);
+            // localStorage.setItem("Token", res.data.token);
+            // localStorage.setItem("Name", res.data.user.name);
+            //   navigate('/')
+            if(res.status===201){
+              console.log('Đăng ký thành công!')
+              localStorage.setItem("ID",res.data.user._id);
+              localStorage.setItem("Name",res.data.user.name);
+              localStorage.setItem("Token", res.data.token);
+              toast.success('Đăng ký thành công!')
+              setTimeout(() => {
+                navigate('/'); 
+              },3000);
+            }else{
+              console.log('Lỗi đăng nhập')
+              toast.error('Email hoặc mật khẩu không chính xác!')
+            }
+          })
+            
           .catch((err)=>{
             console.log(err.message);
           })
@@ -59,7 +74,7 @@ function Signup(){
                 <input type='password' placeholder='Nhập mật khẩu'  onChange={e=>setPass(e.target.value)} value={password}/>
                 {password==='' && <div className='warning'>Nhập mật khẩu</div>}
                 <input type='password' placeholder='Nhập lại mật khẩu'  onChange={e=>setRepass(e.target.value)} value={confirmPassword}/>
-                {confirmPassword==='' ? <div className='warning'>Nhập lại mật khẩu</div> : checkPass && <div className='warning'>Mật khẩu nhập lại không khớp</div>}
+                {confirmPassword==='' && <div className='warning'>Nhập lại mật khẩu</div>}
                 <div className='checkbox'>
                     <Checkbox id='checkbox' onClick={hanldeCheck}/>
                     <label htmlFor='checkbox'>Bạn đồng ý với các "Điều Khoản Sử Dụng" của HFilm</label>
@@ -71,6 +86,18 @@ function Signup(){
                 </center>
             </form>
         </div>
+        <ToastContainer
+            position="bottom-center"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </Layout>
     )
 }
